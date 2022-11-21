@@ -2,9 +2,11 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :post
 
-  # turbo_stream on create
+  # broadcasts_to ->(comment) { 'comments' }
+
   after_create_commit { create_broadcast }
   after_update_commit { update_broadcast }
+  after_destroy_commit { destroy_broadcast }
 
   private
 

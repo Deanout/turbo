@@ -6,12 +6,10 @@
   <%= button_to "Destroy this post", @post, method: :delete %>
 </div>
 <%= render "comments/form", post: @post %>
-<% @post.comments.each do |comment| %>
+<hr />
+<%= turbo_stream_from "comments", id: "comments" %>
+<% @comments.each do |comment| %>
   <%= turbo_frame_tag(dom_id(comment)) do %>
-    <% if current_user&.eql?(comment.user) %>
-      <%= render "comments/comment_with_actions", comment: comment %>
-    <% else %>
-      <%= render "comments/comment", comment: comment %>
-    <% end %>
+    <%= render "comments/comment", comment: comment %>
   <% end %>
 <% end %>

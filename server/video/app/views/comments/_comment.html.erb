@@ -1,10 +1,7 @@
-<div style="border 1px gray solid">
+<%= turbo_frame_tag(dom_id(comment)) do %>
   <p>
     <em>[<%= comment.id %>]</em>
     <strong><%= comment.user.email.split('@').first.capitalize %></strong>
   </p>
-  <p>
-    <strong>Body:</strong>
-    <%= comment.body %>
-  </p>
-</div>
+  <p><%= comment.body %></p>
+<% end %>

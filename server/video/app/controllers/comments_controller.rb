@@ -3,7 +3,6 @@ class CommentsController < ApplicationController
   before_action :set_post, only: %i[create]
 
   def create
-    @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
     @comment.user = current_user
     @comment.save
@@ -13,10 +12,6 @@ class CommentsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:post_id])
-  end
-
-  def set_comment
-    @comment = @post.comments.find(params[:id])
   end
 
   def comment_params
