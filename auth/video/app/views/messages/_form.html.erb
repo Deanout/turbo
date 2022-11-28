@@ -1,0 +1,4 @@
+<%= form_with model: Message.new, url: room_messages_path(room) do |f| %>
+  <%= f.text_field :body %>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,6 @@
+<%= turbo_frame_tag dom_id(message) do %>
+  <%= turbo_frame_tag(["controls", dom_id(message)]) %>
+  <%= render "messages/admin_controls", message: message if admin %>
+  <%= render "messages/user_controls", message: message if defined?(user) && user == message.user %>
+  <p><%= "#{message.user.email.capitalize}: #{message.body}" %></p>
+<% end %>

@@ -1,0 +1,15 @@
+<div id="<%= dom_id room %>">
+  <h1>
+    <%= room.name %>
+  </h1>
+  <%= render "messages/form", room: room %>
+  <h2>Messages</h2>
+  <div id="messages">
+    <% room.messages.reverse.each do |message| %>
+      <%= render "messages/message", 
+          message: message, 
+          admin: current_user.admin?,
+          user: current_user %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<%= button_to "Creator Delete", 
+    room_message_path(message.room, message), 
+    method: :delete, 
+    data: { confirm: "Are you sure?" } %>
